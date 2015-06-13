@@ -1,0 +1,8 @@
+<% @apartment.each_slice(2) do |apartment| %>
+  <div>
+    <% apartment.each do |apartment| %>
+         
+          <h2>  <%= link_to apartment.title, apartment %></h2>
+          <% end %>	
+<% end %>
+

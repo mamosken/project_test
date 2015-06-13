@@ -1,0 +1,24 @@
+<div id="errors">
+	<% if @apartment.errors.any? %>
+		<% @apartment.errors.full_messages.each do |error| %>
+		<p style="color:red;"><%= error %></p>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="panel-body">
+	<%=form_for @apartment do |f| %>
+		<p>
+		<%= f.label :title, "title"%>
+		<%= f.text_field :title %>
+		</p>
+		</br>
+		<p>
+		<%= f.label :body, "body" %>
+		<%= f.text_field :body %>
+		</br>
+		<%= f.submit "submit" %>
+		</p>
+	<% end %>
+</div>
+	  
