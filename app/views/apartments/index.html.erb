@@ -1,8 +1,21 @@
-<% @apartment.each_slice(2) do |apartment| %>
-  <div>
-    <% apartment.each do |apartment| %>
-         
-          <h2>  <%= link_to apartment.title, apartment %></h2>
-          <% end %>	
-<% end %>
 
+
+
+<% @apartment.each_slice(3) do |apartments| %>
+	<div class="row">
+	    <% apartments.each do |apartment| %>
+	    <div class= "col-md-4">
+	    	<div class="apartment">
+		      <div class= "image_wrapper">
+			       	<%= link_to apartment do  %>
+			       	<h4> <%= link_to apartment.title, apartment %></h4>
+		       		<%= link_to (image_tag apartment.image.url(:medium, class: "apartment_image")), apartment  %></br>
+		       		<p class="bellow_image_contact">posted by put the user@email</p>
+		       		</div>
+		       		
+	 		  </div>
+			</div>	<% end %>
+			<% end %>
+		</div>
+	</div>	
+<% end %>

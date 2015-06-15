@@ -1,6 +1,6 @@
+<%= image_tag @apartment.image.url(:medium, class: "apartment_image")  %>
 <h1> <%= @apartment.title %></h1>
 <p> <%= @apartment.body %></p>
-
 <%= link_to "Back", root_path, class: 'btn btn-default' %>
 <%= link_to 'Edit', edit_apartment_path, class: 'btn btn-default' %>
 <%= link_to 'Delete', apartment_path, method: :delete, data: {confirm:"Confirm if you want to delete"},class: 'btn btn-default' %>
