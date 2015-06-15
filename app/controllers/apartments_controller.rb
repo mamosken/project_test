@@ -30,9 +30,9 @@ class ApartmentsController < ApplicationController
 			redirect_to @apartment
 		else
 			render 'edit'
-		end	
-		
+		end		
 	end
+	
 	def destroy
 		@apartment.destroy
 		redirect_to root_path, notice: "Successfully deleted recipe"
@@ -41,7 +41,7 @@ class ApartmentsController < ApplicationController
 
 	private 
 		def apartment_params
-			params.require(:apartment).permit(:title, :body)
+			params.require(:apartment).permit(:title, :body, :image)
 			
 		end
 		def find_apartment

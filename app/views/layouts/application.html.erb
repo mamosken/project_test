@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ProjectTest</title>
+  <title>Apartment Test</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar">
-	<div class= "navbar-default" >
+<nav class="navbar navbar-default" >
 		<div class="container">
-			<div class= "navbar-brand">
-				<%= link_to "Apartment Organizer", root_path  %>
+			<div class= "navbar-brand" >
+				<%= link_to "Apartmizer", root_path  %>
 			</div>
+			<div>
 			<ul class="nav navbar-nav navbar-right">
-		        <li>
-		          <%= link_to "New Apartmizer", new_apartment_path %>
-		        </li>
-		        <li>
-		        
-		        </li>
+		        <li><%= link_to "New Apartmizer", new_apartment_path %> </li>
+		         <li><%= link_to "Signout", new_apartment_path %></li>
 		    </ul>
-		</div>
-	</div>
+		    </div>
+		</div> 
 </nav>
 	<div>
 <div class="container">

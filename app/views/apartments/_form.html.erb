@@ -1,24 +1,30 @@
+
+
 <div id="errors">
 	<% if @apartment.errors.any? %>
 		<% @apartment.errors.full_messages.each do |error| %>
-		<p style="color:red;"><%= error %></p>
+			<p style="color:red;"><%= error %></p>
 		<% end %>
 	<% end %>
 </div>
 
-<div class="panel-body">
-	<%=form_for @apartment do |f| %>
+	<%=form_for @apartment, class: 'form-inline' do |f| %>
 		<p>
+		<div class="form-group">
 		<%= f.label :title, "title"%>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, class: "form-control" %>
 		</p>
 		</br>
 		<p>
 		<%= f.label :body, "body" %>
-		<%= f.text_field :body %>
+		<%= f.text_field :body, class: 'form-control' %>
 		</br>
-		<%= f.submit "submit" %>
+		<%= f.label :image, "image" %>
+		<%= f.file_field :image %>
+		</br>
+		<%= f.submit "submit", class: 'btn btn-default' %>
 		</p>
+		</div>
 	<% end %>
-</div>
-	  
+	
+
