@@ -1,5 +1,5 @@
 class Apartment < ActiveRecord::Base
-	
+	belongs_to :user
 	has_many :rooms, dependent: :destroy
 	has_many :preferences
 	accepts_nested_attributes_for :rooms, :allow_destroy => true
