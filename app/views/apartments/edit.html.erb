@@ -6,10 +6,10 @@
 
 	<div  class= "roomate_list_wrapper" class="form-group">
 		<ul>
-		<% @apartment.rooms.each do |room| %>
+		<% @apartment.rooms.each do |room| %>  
 		
 			<li>
-				<%= (room.name)%> 
+				<%= link_to("X", room_path(room) , method: :delete, class: "btn btn-danger") %><%= (room.name)%> 
 			</li>
 			</br>
 			<% end %>

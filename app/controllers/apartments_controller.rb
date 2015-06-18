@@ -9,11 +9,12 @@ class ApartmentsController < ApplicationController
 	end
 
 	def new
-		@apartment = Apartment.new
+		@apartment = current_user.apartments.build
+		 @apartment.build_name
 	end
 
 	def create
-		@apartment = Apartment.new(apartment_params)
+		@apartment = current_user.apartments.build(apartment_params)
 
 		if @apartment.save
 			redirect_to @apartment, notice:"Successfully created a new apartment"

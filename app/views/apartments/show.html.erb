@@ -3,17 +3,17 @@
 		<%= image_tag @apartment.image.url(:medium, class: "apartment_image")  %>
 		<h1> <%= @apartment.title %></h1>
 		<p> <%= @apartment.body %></p>
+		<div>
+			<p><%= @apartment.user.email %></p>
+			</div>
 		<div class="roomate_list_wrapper">
-	
-					<h4>Looking for roomate</h4>	
-					<% @apartment.rooms.each do |room| %>
-					</ul>
-					<li><%= (room.name)%><%= link_to("  	x ", room_path(room) , method: :delete) %></li>
-					</ul>
-					<% end %>
-		
+			<h4>Looking for roomate</h4>	
+			<% @apartment.rooms.each do |room| %>
+			</ul>
+			<li><%= (room.name)%><%= link_to(" x ", room_path(room) , method: :delete) %></li>
+			</ul>
+			<% end %>
 		</div>
-
 		<div class="row">
 			<div class="col-md-12">
 			<%= link_to "Back", root_path, class: 'btn btn-default' %>

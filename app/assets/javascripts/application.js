@@ -15,3 +15,6 @@
 //= require cocoon
 //= require turbolinks
 //= require_tree .
+$(document).on('page:change', function() {
+	$('#add_btn').trigger('click');
+});

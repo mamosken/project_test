@@ -11,21 +11,22 @@
 <div class="center_form">
 	<div class="form-group">
 		<%=form_for @apartment, class: 'form-inline' do |f| %>
-			<%= f.label :title, "Apartment's title"%>
-			<%= f.text_field :title, class: "form-control" %></br>
-				<%= f.label :body, "Description of the room" %>
-				<%= f.text_field :body, class: 'form-control' %></br>
-					<%= f.label :image, "image" %>
-					<%= f.file_field :image %></br>
+		<%= f.label :title, "Apartment's title"%>
+		<%= f.text_field :title, class: "form-control" %></br>
+		<%= f.label :body, "Description of the room" %>
+		<%= f.text_field :body, class: 'form-control' %></br>
+		<%= f.label :image, "image" %>
+		<%= f.file_field :image %></br>
 <div class="roomate_list_wrapper">
 	<p>Looking for roomate who...</p>
 		<div class="links">
-	<%= f.fields_for :name do |room| %>
+			<div class="nested-fields">
+			<%= f.fields_for :rooms_attributes do |room| %>
+			<%= link_to_add_association 'Add', f, :rooms, class: "btn btn-default add-button", id:"add_btn" %> 
 
-	<%= link_to_add_association 'Add', f, :rooms, class: "btn btn-default add-button", id:"add_btn" %> 
-		<%= render 'room_fields', f: room %> </br>
-	 <% end %>
-	</div>	  	
+		 	<% end %>
+			 </div>
+		</div>	  	
 		<div class="roomate_list_wrapper">
 		<%= link_to "Cancel", apartments_path, class: "btn btn-warning" %>
 			<%= f.submit "submit", class: 'btn btn-primary' %>
