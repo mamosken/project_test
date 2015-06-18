@@ -1,2 +1,18 @@
-<h1> Edit Apartment </h1>
-<%= render 'form'  %>
+<div>
+	<div class="center_form">
+		<h1> Edit Apartment </h1>
+	</div>
+		<%= render 'form'  %>
+
+	<div  class= "roomate_list_wrapper" class="form-group">
+		<ul>
+		<% @apartment.rooms.each do |room| %>
+		
+			<li>
+				<%= (room.name)%> 
+			</li>
+			</br>
+			<% end %>
+		</ul>
+	</div>
+</div>
