@@ -16,7 +16,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 body {
 	background: rgb(235, 238, 243);
 }
@@ -25,7 +24,7 @@ body {
 	margin-bottom: 20px;
 	border: 1px solid transparent;
 	border-radius: 5px;
-	background-color: #000;
+	background-color: #C4E79A;
 	font-weight: bold;
 }
 .apartment {
@@ -47,7 +46,7 @@ body {
 }
 
 .form-group {
-	width: 300px;
+	width: 50%;
 }
 
 .new_apartment {
@@ -58,16 +57,40 @@ body {
 	width:100%;
 }
 .bellow_image_contact{
- padding: 0 12px;
+	 padding: 0 12px;
 }
 
+.center_form{
+	 width: 50%;
+	 margin: auto;	
 
+}
 
+// #edit {
+// 	color: blue;
+// }
+.roomate_list_wrapper{
+	margin-bottom: 50px;
+	background-color:#fff;
+	ul, ol {
+		padding-left: 18px;
+		li {
+			padding: 1em 0;
+			border-bottom: 1px solid #EAEAEA;
+		}
+	}
+}
 
+#name_field{
+ max-width: 80%;
+}
 
-
-
-
-
-
+#add_btn{
+	float: right;
+	width: 20%;
+}
+.links{
+	margin: 0 auto;
+	max-width:100%;
+}
 
