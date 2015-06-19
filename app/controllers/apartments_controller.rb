@@ -3,6 +3,8 @@ class ApartmentsController < ApplicationController
 	before_action :find_apartment, only: [:show, :edit, :update, :destroy]
 	
 	def index
+		@apartments = Apartment.all
+		@rooms = Room.search(params[:search]) if params[:search].present?
 		@apartment = Apartment.all.order("created_at DESC")
 	end
 	def show
@@ -10,7 +12,6 @@ class ApartmentsController < ApplicationController
 
 	def new
 		@apartment = current_user.apartments.build
-		 @apartment.build_name
 	end
 
 	def create
