@@ -1,4 +1,6 @@
+
 class Apartment < ActiveRecord::Base
+	require 'elasticsearch/model'
 	belongs_to :user
 	has_many :rooms, dependent: :destroy
 	has_many :preferences
@@ -19,5 +21,7 @@ class Apartment < ActiveRecord::Base
 
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "80x80>" }, :default_url => "/images/:style/missing.png"
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+	 include Elasticsearch::Model
+ 	 include Elasticsearch::Model::Callbacks
+	Article.import
 end
-

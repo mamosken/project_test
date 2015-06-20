@@ -4,4 +4,5 @@ Rails.application.routes.draw do
  		resources :rooms, shallow: true
  end
   root "apartments#index"
+  get 'apartments', to: 'apartments#search'
 end

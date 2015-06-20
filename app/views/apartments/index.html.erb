@@ -1,29 +1,44 @@
 
-
 <div>
-	<%= form_tag apartments_path, method: 'get' do %>
+	<%= form_tag(apartments_path, method: "get", id: "search-form") do %>
 		<p>
 			<%= text_field_tag :search, params[:search] %>
 			<%= submit_tag "search", name: "nil" %>
 		</p>
 	<% end %>
 </div>
-	<div>
-
-	<% @rooms.each do |room| %>
-	<p> You searched for keywork <u><i><%= room.name%><i></u><p>
-	</div>
+<h1>Apartment Search</h1>
+ 
+<%= form_for apartment_path, method: "get" do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
 <% end %>
+ 
+<ul>
+  <% @apartments.each do |apartment| %>
+    <li>
+      <h3>
+        <%= link_to apartment.title, controller: "apartment", action: "index", id: apartment._id%>
+      </h3>
+    </li>
+  <% end %>
+</ul>
 
+<div>
+	<div>
+	<% if @rooms %>
+	<%= room.name %>
+	<% end %>
 <% @apartment.each_slice(3) do |apartments| %>
 	<div class="row">
 	    <% apartments.each do |apartment| %>
-	    	<% @rooms.each do |room| %>
 		    <div class= "col-md-4">
 	    		<div class="apartment">
 		     		 <div class= "image_wrapper">
 				       	<%= link_to apartment do  %>
-				       	<p>Apartment wants a <b><%= room.name%></b> roommate<p> 
 				       	<h4> <%= link_to apartment.title, apartment %></h4>
 			       		<%= link_to (image_tag apartment.image.url(:medium, class: "apartment_image")), apartment  %></br>
 			       		<p class="bellow_image_contact">posted by </p> 
@@ -31,12 +46,6 @@
 	 			</div>
 			</div>	
 					<% end %>
-			<% end %>
-<!-- 	</div>
-	</div>	 -->
-		<% end %>
-    	
-	
+			<% end %>	
 	</div>
 <% end %>
-

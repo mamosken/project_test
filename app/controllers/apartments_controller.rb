@@ -4,8 +4,19 @@ class ApartmentsController < ApplicationController
 	
 	def index
 		@apartments = Apartment.all
-		@rooms = Room.search(params[:search]) if params[:search].present?
 		@apartment = Apartment.all.order("created_at DESC")
+			if params[:search]
+			@rooms = Room.search(params[:search])
+			else
+			@rooms = Room.all.order('created_at DESC')
+	 		 end
+	end
+	def search
+	  if params[:q].nil?
+	    @articles = []
+	  else
+	    @articles = Article.search params[:q]
+	  end
 	end
 	def show
 	end
@@ -43,7 +54,7 @@ class ApartmentsController < ApplicationController
 
 	private 
 		def apartment_params
-			params.require(:apartment).permit(:title, :body, :image, rooms_attributes: [:id, :name, :_destroy])
+			params.require(:apartment).permit(:title, :body, :zipcode,  :image, rooms_attributes: [:id, :name, :_destroy])
 		end
 		def find_apartment
 			@apartment = Apartment.find(params[:id])

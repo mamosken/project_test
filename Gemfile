@@ -24,6 +24,8 @@ gem 'paperclip', '~> 4.2.2'
 gem 'cocoon', '~> 1.2.6'
 gem 'devise', '~> 3.5.1'
 # bundle exec rake doc:rails generates the API under doc/api.
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
