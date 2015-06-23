@@ -9,24 +9,32 @@
 <body>
 <nav class="navbar navbar-default" >
 		<div class="container">
-			<div class= "navbar-brand" >
+			<div class= "navbar-brand">
 				<%= link_to "Roomy", root_path  %>
 			</div>
 			<div>
-			<ul class="nav navbar-nav navbar-right">
-		        <li><%= link_to " Post your room", new_apartment_path %> </li>
-		         <li><%= link_to "Signout", new_apartment_path %></li>
-		    </ul>
+			<% if current_user %>
+				<ul class="nav navbar-nav navbar-right">
+			        <li><%= link_to " Post your room", new_apartment_path %> </li>
+			        <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
+		        </ul>
+		    <% else %>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "Sign Up", new_user_registration_path%></li>
+					<li><%= link_to "Sign In", new_user_session_path %><li>
+				</ul>
+		   	<% end %>
 		    </div>
 		</div> 
 </nav>
-	<div>
 <div class="container">
   	<% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert" %>
   <% end %>
 </div>
 <%= yield %>
-
+ <% Category.all.each do |category| %>
+ 	<%= link_to category.name, apartments_path(category: category.name)  %>
+<% end %>
 </body>
 </html>

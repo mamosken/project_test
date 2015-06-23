@@ -11,6 +11,7 @@
 <div class="center_form">
 	<div class="form-group">
 		<%=form_for @apartment, class: 'form-inline' do |f| %>
+		<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a Neighborhood"} %>
 		<%= f.label :title, "Apartment's title"%>
 		<%= f.text_field :title, class: "form-control" %></br>
 		<%= f.label :body, "Description of the room" %>

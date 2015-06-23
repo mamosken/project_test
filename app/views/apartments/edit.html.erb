@@ -3,16 +3,17 @@
 		<h1> Edit Apartment </h1>
 	</div>
 		<%= render 'form'  %>
-
+<% if current_user and current_user == @user%>
 	<div  class= "roomate_list_wrapper" class="form-group">
 		<ul>
-		<% @apartment.rooms.each do |room| %>  
 		
+		<% @apartment.rooms.each do |room| %>  
 			<li>
 				<%= link_to("X", room_path(room) , method: :delete, class: "btn btn-danger") %><%= (room.name)%> 
-			</li>
+			</li> 
+		<% end %>
 			</br>
-			<% end %>
+<% end %>
 		</ul>
 	</div>
 </div>
