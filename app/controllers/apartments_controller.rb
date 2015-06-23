@@ -57,7 +57,6 @@ class ApartmentsController < ApplicationController
 	private 
 		def apartment_params
 			params.require(:apartment).permit(:title, :body,:category_id, :zipcode, :image, rooms_attributes: [:id, :name, :_destroy]).merge(user: current_user)
-
 		end
 		def find_apartment
 			@apartment = Apartment.find(params[:id])
