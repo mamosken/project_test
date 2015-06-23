@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150619194510) do
+=======
+ActiveRecord::Schema.define(version: 20150622185049) do
+>>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title"
@@ -24,6 +28,16 @@ ActiveRecord::Schema.define(version: 20150619194510) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "zipcode"
+<<<<<<< HEAD
+=======
+    t.integer  "category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
   end
 
   create_table "preferences", force: :cascade do |t|
