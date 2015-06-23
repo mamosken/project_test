@@ -55,15 +55,15 @@ body {
 
 .container{
 	width:100%;
-	margin:0 auto;
+	margin:	0 auto;
 }
 .bellow_image_contact{
 	 padding: 0 12px;
 }
 
 .center_form{
-	 width: 50%;
-	 margin: auto;	
+	 width: 100%;
+	 margin: 0 auto;	
 
 }
 
@@ -71,6 +71,8 @@ body {
 // 	color: blue;
 // }
 .roomate_list_wrapper{
+	max-width: 50%;
+	margin: 0 auto;
 	margin-bottom: 50px;
 	background-color:#fff;
 	ul, ol {
