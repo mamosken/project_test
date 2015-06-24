@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-	has_many :apartment
+	has_many :apartments
 end

@@ -26,8 +26,11 @@ gem 'devise', '~> 3.5.1'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'geocoder'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

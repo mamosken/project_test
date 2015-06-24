@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150619194510) do
-=======
-ActiveRecord::Schema.define(version: 20150622185049) do
->>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
-=======
-ActiveRecord::Schema.define(version: 20150622185049) do
->>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
+ActiveRecord::Schema.define(version: 20150623151529) do
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title"
@@ -31,33 +23,20 @@ ActiveRecord::Schema.define(version: 20150622185049) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "zipcode"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
+    t.string   "postal_code"
     t.integer  "category_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "price_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-<<<<<<< HEAD
->>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
-=======
->>>>>>> 8c1ea9d2aaeebf847af23ce1488d7c77116e22f2
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "url_name"
+    t.string   "postal_code"
   end
-
-  create_table "preferences", force: :cascade do |t|
-    t.text     "draft"
-    t.integer  "apartment_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "preferences", ["apartment_id"], name: "index_preferences_on_apartment_id"
 
   create_table "rooms", force: :cascade do |t|
     t.string   "name"

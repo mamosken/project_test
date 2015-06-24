@@ -16,8 +16,8 @@
 		<%= f.text_field :title, class: "form-control" %></br>
 		<%= f.label :body, "Description of the room" %>
 		<%= f.text_field :body, class: 'form-control' %></br>
-		<%= f.label :zipcode, "zipcode" %>
-		<%= f.text_field :zipcode, class: 'form-control' %></br>
+		<%= f.label :postal_code, "zipcode" %>
+		<%= f.text_field :postal_code, class: 'form-control' %></br>
 		<%= f.label :image, "image" %>
 		<%= f.file_field :image %></br>
 <div class="roomate_list_wrapper">
@@ -28,6 +28,7 @@
 			<%= link_to_add_association 'Add', f, :rooms, class: "btn btn-default add-button", id:"add_btn" %> 
 
 		 	<% end %>
+		 	<p> add price range option</p>
 			 </div>
 		</div>	  	
 		<div class="roomate_list_wrapper">
