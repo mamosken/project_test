@@ -19,4 +19,13 @@
 //= require_tree .
 $(document).on('page:change', function() {
 	$('#add_btn').trigger('click');
+	
+	if (myApartment.postal_code === "10038") {
+		alert('The postal code is ' + myApartment.postal_code );
+	}
+
+});
+
+$(document).on('page:change', function initialize() {
+
 });

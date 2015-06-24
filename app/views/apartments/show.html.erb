@@ -10,10 +10,11 @@
 						<div style='width: 500px;'>
 						<div id="map" style='width: 500px; height: 300px;'></div>
 						</div>
+							<p> <%= @apartment.body %></p>
+							<p> <%= @apartment.postal_code %> </p>
 					</div>
 				<% end %>
-			<p> <%= @apartment.body %></p>
-			<p> <%= @apartment.postal_code %> </p>
+		
 			<div class="user_contact">
 				<p><%= @apartment.user.email %></p>	
 			</div>
@@ -32,33 +33,40 @@
 				<div class="col-md-12">
 				<%= link_to "Back", root_path, class: 'btn btn-default' %>
 				<% if current_user and current_user ==  @apartment.user%>
-				<%= link_to 'Edit', edit_apartment_path, class: 'btn btn-default', id: "edit" %>
-				<%= link_to 'Delete', apartment_path, method: :delete, data: {confirm:"Confirm if you want to delete"},class: 'btn btn-default' %>
+					<%= link_to 'Edit', edit_apartment_path, class: 'btn btn-default', id: "edit" %>
+					<%= link_to 'Delete', apartment_path, method: :delete, data: {confirm:"Confirm if you want to delete"},class: 'btn btn-default' %>
 				<% end %>
+
 				</div>
 			</div>	
 		</div>
 	</div>		
 
-	<script type= "text/javascript"> 
-		handler = Gmaps.build('Google');
-		handler.buildMap({
+// 	<script type= "text/javascript"> 
+		var myApartment = <%= raw @apartment.to_json %>;
+		var neighborhoodBoundry = <%= raw @category.coordinates.to_json %>;
+		var hoodLatLngs = [];
+		for (var i = 0; i < neighborhoodBoundry.length; i++) {
+			hoodLatLngs.push(new google.maps.LatLng(neighborhoodBoundry[i].latitude, neighborhoodBoundry[i].longitude))
+		}
+// 		handler = Gmaps.build('Google');
+// 		handler.buildMap({
 
-			provider: {
+// 			provider: {
+//			zoom:12,
 
-			}, 
-			internal: {
-				id: 'map'
-			}
-		}, 
-		function(){
+// 			}, 
+// 			internal: {
+// 				id: 'map'
+// 			}
+// 		}, 
+// 		function(){
 
-		 markers = handler.addMarkers(<%= raw @hash.to_json  %>);
-		 handler.bounds.extendWith(markers);
-		 handler.fitMapToBounds();
-});
-		</script>
-
+// 		 markers = handler.addMarkers(<%= raw @hash.to_json  %>);
+// 		 handler.bounds.extendWith(markers);
+// 		 handler.fitMapToBounds();
+// });
+// 		</script>
 </div>
 
 

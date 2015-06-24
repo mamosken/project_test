@@ -27,10 +27,12 @@ class ApartmentsController < ApplicationController
 		# 	marker.lat apartment.latitude
 		# 	marker.lng apartment.longitude
 		# end
+			@category =Category.all
 
 	end
 
 	def show
+			@category =Category.all
 
 	@hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
 			marker.lat apartment.latitude
@@ -39,7 +41,9 @@ class ApartmentsController < ApplicationController
 	end
 
 	def find
-		@apartment_id = Apartment.find(postal_code: postal_code)
+					@category =Category.all
+
+		# @apartment_id = Apartment.find(postal_code: postal_code)
 		@category = Category.find_by(url_name: params[:neighborhood])
 		@apartment = Apartment.find_by(postal_code: params[:postal_code])
 
