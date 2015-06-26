@@ -19,6 +19,15 @@
 body {
 	background: rgb(235, 238, 243); 
 	padding: 50px;
+	font-size: 19px;
+}
+.image_wrapper {
+	background-color: rgba(232, 230, 230, 0.5);
+	// background-image: linear-gradient(to bottom,#331E89 0,#B1A4E4 100%);
+a img{
+	width: 300px;
+	height: 250px;
+}
 }
 .alert {
 	padding: 15px;
@@ -34,8 +43,21 @@ body {
 	border-radius: 5px;
 	margin-bottom: 40px;
 }
+.nav_form{
+	float: right;
+}
+.btn-default {
+	float: right;
+}
+.nav_form li{
+	list-style: none;
+	display: inline-block;
+	float: right;
+}
+
 .apartment_image{
 	max-height: 450px;
+	max-width: 500px;
 }
 .image_wrapper {
 	max-height: 400px;
@@ -45,11 +67,19 @@ body {
 	overflow: hidden;
 	padding: 5px;
 }
-
+.navbar navbar-default ul{
+	padding: 5px;
+}
 .form-group {
 	width: 50%;
 }
-
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 36px;
+  line-height: 20px;
+}
 .new_apartment {
 	padding: 20px 40px;
 }
@@ -86,7 +116,9 @@ body {
 		}
 	}
 }
-
+#no_room_message{
+	color:#337ab7
+}
 #name_field{
  	max-width: 80%;
 }
@@ -105,9 +137,18 @@ body {
 }
 .list_neighborhood{
 	clear:both;
-
+}
+.list_neighborhood{
+	padding-left:5px;
+}
+.open>.dropdown-menu {
+  padding: 9px;
 }
 .wrapper-show{
 	width: 70%;
  	 margin: 0 auto;
+}
+
+#search {
+	height: 35px;
 }

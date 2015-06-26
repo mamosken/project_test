@@ -1,0 +1,26 @@
+<h1> <%= apartment.title %></h1>
+<%= image_tag apartment.image.url(:medium, class: "apartment_image")  %>
+<div class="user_contact">
+	<p><%= apartment.user.email %></p>	
+</div>
+<div class="roomate_list_wrapper">
+	<h4>Looking for roomate</h4>	
+		<% apartment.rooms.each do |room| %>
+		<ul>
+			<li><%= (room.name)%>
+			<% if current_user and current_user == apartment.user%>
+			<%= link_to(" x ", room_path(room), method: :delete) %></li>
+		</ul>
+		<% end %>
+		<% end %>
+</div>
+<div class="row">
+	<div class="col-md-12">
+	<%= link_to "Back", root_path, class: 'btn btn-default' %>
+	<% if current_user and current_user ==  apartment.user%>
+		<%= link_to 'Edit', edit_apartment_path(apartment), class: 'btn btn-default', id: "edit" %>
+		<%= link_to 'Delete', apartment_path(apartment), method: :delete, data: {confirm:"Confirm if you want to delete"},class: 'btn btn-default' %>
+	<% end %>
+
+	</div>
+</div>

@@ -1,12 +1,5 @@
 
-<div>
-	<%= form_tag(apartments_path, method: "get", id: "search-form") do %>
-		<p>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "search", name: "nil" %>
-		</p>
-	<% end %>
-</div>
+
 	<div>
 <%if @rooms.present? %>
 	<% @rooms.each do |room| %>

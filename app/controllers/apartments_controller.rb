@@ -1,6 +1,6 @@
 class ApartmentsController < ApplicationController
 	
-	before_action :find_apartment, only: [:show, :edit, :update, :destroy, :find]
+	before_action :find_apartment, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 	def index
 		
@@ -18,6 +18,8 @@ class ApartmentsController < ApplicationController
 		elsif params[:search].blank?
 			@rooms = nil
 		end
+			@category =Category.all.order('name ASC')
+
 		# @apartment_id = Apartment.find(postal_code: postal_code).id
 
 		# @apartment_id = Apartment.find_by(postal_code: params[:postal_code])
@@ -27,26 +29,31 @@ class ApartmentsController < ApplicationController
 		# 	marker.lat apartment.latitude
 		# 	marker.lng apartment.longitude
 		# end
-			@category =Category.all
+			@categories =Category.all.order('name ASC')
 
 	end
 
 	def show
-			@category =Category.all
+			@categories =Category.all.order('name ASC')
 
-	@hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
-			marker.lat apartment.latitude
-			marker.lng apartment.longitude
-			marker.infowindow @apartment.postal_code
+			# @apartment = Apartment.find_by(postal_code: params[:postal_code])
+			@hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
+				marker.lat apartment.latitude
+				marker.lng apartment.longitude
+				marker.infowindow @apartment.postal_code
+			end
 	end
 
 	def find
-					@category =Category.all
-
+		@categories =Category.all.order('name ASC')
+		# @category = Category.all
 		# @apartment_id = Apartment.find(postal_code: postal_code)
 		@category = Category.find_by(url_name: params[:neighborhood])
-		@apartment = Apartment.find_by(postal_code: params[:postal_code])
-
+		@apartments = Apartment.where(category: @category)
+		@hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+			marker.lat apartment.latitude
+			marker.lng apartment.longitude
+			marker.infowindow apartment.title
 		end
 	end
 
@@ -67,8 +74,10 @@ class ApartmentsController < ApplicationController
 	end
 
 	def edit
-		
+		@categories =Category.all.order('name ASC')
+
 	end
+
 	def update
 		if @apartment.update(apartment_params)
 			redirect_to @apartment
@@ -84,7 +93,7 @@ class ApartmentsController < ApplicationController
 
 	private 
 		def apartment_params
-			params.require(:apartment).permit(:title, :body,:category_id, :postal_code, :image, rooms_attributes: [:id, :name, :_destroy]).merge(user: current_user)
+			params.require(:apartment).permit(:title, :body, :category_id, :postal_code, :image, rooms_attributes: [:id, :name, :_destroy]).merge(user: current_user)
 		end
 		def find_apartment
 			@apartment = Apartment.find(params[:id])
