@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624163124) do
+ActiveRecord::Schema.define(version: 20150626143411) do
 
   create_table "apartments", force: :cascade do |t|
     t.string   "title"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(version: 20150624163124) do
   end
 
   add_index "coordinates", ["category_id"], name: "index_coordinates_on_category_id"
+
+  create_table "prices", force: :cascade do |t|
+    t.string   "range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string   "name"

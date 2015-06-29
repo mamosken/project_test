@@ -11,31 +11,33 @@
 <div class="center_form">
 	<div class="form-group">
 		<%=form_for @apartment, class: 'form-inline' do |f| %>
-		<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a Neighborhood"} %>
+		<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a Neighborhood"}, class: "form-control"  %></br>
+		<%= f.collection_select :price_id, Price.all, :id, :range, {prompt: "Choose a Price Range"} , class: "form-control" %></br>
 		<%= f.label :title, "Apartment's title"%>
 		<%= f.text_field :title, class: "form-control" %></br>
 		<%= f.label :body, "Description of the room" %>
 		<%= f.text_field :body, class: 'form-control' %></br>
-		<%= f.label :postal_code, "zipcode" %>
-		<%= f.text_field :postal_code, class: 'form-control' %></br>
+
 		<%= f.label :image, "image" %>
 		<%= f.file_field :image %></br>
-<div class="roomate_list_wrapper">
-	<p>Looking for roomate who...</p>
-		<div class="links">
-			<div class="nested-fields">
-			<%= f.fields_for :rooms_attributes do |room| %>
-			<%= link_to_add_association 'Add', f, :rooms, class: "btn btn-default add-button", id:"add_btn" %> 
 
-		 	<% end %>
-		 	<p> add price range option</p>
-			 </div>
-		</div>	  	
-		<div class="roomate_list_wrapper">
-		<%= link_to "Cancel", apartments_path, class: "btn btn-warning" %>
-			<%= f.submit "submit", class: 'btn btn-primary' %>
-		<%= link_to "Back", root_path, class: 'btn btn-default' %>
+	<p>Prefere a roomate who...</p>
+<!-- 		<div class="links"> -->
+	<div class="nested-fields" class="float_left"> 	
+			<%= f.fields_for :rooms_attributes, id: "fields" do |room| %>
+			<%= link_to_add_association ' New line', f, :rooms, class: "btn btn-default add-button", id:"add_btn" %> 
+	
+ 
+ 	</div>	<% end %>
+ 	</br>
+
+ 	<div class="buttons">
+ 	<%= link_to "Cancel", apartments_path, class: "btn btn-warning" %>
+	<%= f.submit "submit", class: 'btn btn-primary' %><% end %> 
+	<%= link_to "Back", root_path, id: "back",class: 'btn btn-default'%>
 	</div>
-		<% end %> 
-	</div> <!-- group form-->
-</div> <!-- center-form-->
+
+	</div>
+				</br></br>	  	
+
+</div> <!-- group form-->

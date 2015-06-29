@@ -4,36 +4,35 @@ class ApartmentsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 	def index
 		
-		if params[:category].blank?
-			@apartments = Apartment.all
+		if params[:category].blank? || params[:price].blank?
 			@apartment = Apartment.all.order("created_at DESC")
+
 		else
 			@category_id = Category.find_by(name: params[:category]).id
-			@apartments = Apartment.all
 			@apartment = Apartment.where(category_id: @category_id).order("created_at DESC")
 		end
+
+
+		if params[:price].blank?
+			@apartment = Apartment.all.order("created_at DESC")
+		else 
+			@price_id = Price.find_by(range: params[:price]).id
+			@apartment = Apartment.where(price_id: @price_id).order("created_at DESC")
+		end	
 
 		if params[:search].present?
 			@rooms = Room.search(params[:search]) 
 		elsif params[:search].blank?
 			@rooms = nil
 		end
+			@apartments = Apartment.all
 			@category =Category.all.order('name ASC')
-
-		# @apartment_id = Apartment.find(postal_code: postal_code).id
-
-		# @apartment_id = Apartment.find_by(postal_code: params[:postal_code])
-		# @category = Category.find_by(url_name: params[:neighborhood])
-		# # @apartments = Apartment.where(postal_code: @apartments.postal_code)
-		# @hash = Gmaps4rails.build_markers(apartment_id) do |apartment_id, marker|
-		# 	marker.lat apartment.latitude
-		# 	marker.lng apartment.longitude
-		# end
+			@prices = Price.all
 			@categories =Category.all.order('name ASC')
-
 	end
 
 	def show
+			@prices = Price.all
 			@categories =Category.all.order('name ASC')
 
 			# @apartment = Apartment.find_by(postal_code: params[:postal_code])
@@ -45,6 +44,7 @@ class ApartmentsController < ApplicationController
 	end
 
 	def find
+		@prices = Price.all
 		@categories =Category.all.order('name ASC')
 		# @category = Category.all
 		# @apartment_id = Apartment.find(postal_code: postal_code)
@@ -58,23 +58,26 @@ class ApartmentsController < ApplicationController
 	end
 
 	def new
+		@prices = Price.all
 		@apartment = Apartment.new
+		@categories =Category.all.order('name ASC')
+
 	end
 
 	def create
 		@apartment = Apartment.new(apartment_params)
-		
-		
 
 		if @apartment.save
-			redirect_to @apartment, notice:"Successfully created a new apartment"
+			redirect_to @apartment, notice:"Successfully created you new roomy"
 		else
 			render 'new'
 		end
 	end
 
 	def edit
+
 		@categories =Category.all.order('name ASC')
+		@prices = Price.all
 
 	end
 
@@ -93,7 +96,7 @@ class ApartmentsController < ApplicationController
 
 	private 
 		def apartment_params
-			params.require(:apartment).permit(:title, :body, :category_id, :postal_code, :image, rooms_attributes: [:id, :name, :_destroy]).merge(user: current_user)
+			params.require(:apartment).permit(:title, :body, :category_id, :price_id, :image, rooms_attributes: [:id, :name, :_destroy]).merge(user: current_user)
 		end
 		def find_apartment
 			@apartment = Apartment.find(params[:id])

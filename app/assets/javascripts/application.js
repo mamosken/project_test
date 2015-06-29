@@ -19,9 +19,45 @@
 //= require_tree .
 $(document).on('page:change', function() {
 	$('#add_btn').trigger('click');
-
+	if (typeof(rawCoords) !== 'undefined') {
+	  google.maps.event.addDomListener(window, 'load', initialize(rawCoords));
+	}
 });
 
+function initialize(rawCoords) {
+  	if (rawCoords.length > 0) {
+  		var centerPoint = new google.maps.LatLng(rawCoords[0].latitude, rawCoords[0].longitude);
+  	} else {
+  		var centerPoint = new google.maps.LatLng(40.79171919257143, -73.96485328674316);
+  	}
+  var mapOptions = {
+    zoom: 12,
+    center: centerPoint,
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  };
+
+  var neighborhoodCoords = [];
+
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+  // Define the LatLng coordinates for the polygon's path.
+    for (var i = 0; i < rawCoords.length; i++) {
+    	var newCoor = new google.maps.LatLng(rawCoords[i].latitude, rawCoords[i].longitude);
+    	neighborhoodCoords.push(newCoor);
+    }
+    console.log(neighborhoodCoords);
+//create if condition for var and zipcode
+  // Construct the polygon.
+  	neighborhoodPolygon = new google.maps.Polygon({
+    paths: neighborhoodCoords,
+    strokeColor: '#161AA4',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#161AA4',
+    fillOpacity: 0.35
+  });
+  neighborhoodPolygon.setMap(map);
+};
 
 // 	$(document).on('page:change',	function initialize() {
 //   var mapOptions = {

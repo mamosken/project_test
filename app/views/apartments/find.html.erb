@@ -1,66 +1,24 @@
-<!-- <div class="container"> -->
-	<!-- <div class="center_form"> -->
-<div class="wrapper-show">
-	<div class="content_show">
-		<div class="col-md-8">
-			<% if current_user %>	
-				<div class="map_display">
-					<div style='width: 500px;'>
-						<div id="map" style='width: 500px; height: 300px;'></div>
-					</div>
-				</div>
-			<% end %>
+	
+<div class="wrapper_show_find">
+			
 			<% if @apartments.any? %>
+			<div class="wrapper-show">
+				<div class="apartment_image">
 				<%= render @apartments %>
+				</div>
+				</div>
 			<% else %>
 				<h2 id= "no_room_message">No Roomy's</br> in this neighborhood :(</h2>
 			<% end %>
+			<% if current_user %>	
+				<div class="map_display">
+					<div style='width: 400px;'>
+						<div id="map" style='width: 400px; height: 300px;'>	
+						</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
-	</div>		
-</div>
 <script type= "text/javascript"> 
-	// handler = Gmaps.build('Google');
-	// handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-	//   markers = handler.addMarkers(<%= raw @hash.to_json  %>);
-	//   handler.bounds.extendWith(markers);
-	//   handler.fitMapToBounds();
-	// });
-
-	function initialize() {
-	  var rawCoords = <%= raw @category.coordinates.to_json %>
-	  	if (rawCoords.length > 0) {
-	  		var centerPoint = new google.maps.LatLng(rawCoords[0].latitude, rawCoords[0].longitude);
-	  	} else {
-	  		var centerPoint = new google.maps.LatLng(40.79171919257143, -73.96485328674316);
-	  	}
-	  var mapOptions = {
-	    zoom: 12,
-	    center: centerPoint,
-	    mapTypeId: google.maps.MapTypeId.TERRAIN
-	  };
-
-	  var neighborhoodCoords = [];
-
-	  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-	  // Define the LatLng coordinates for the polygon's path.
-	    for (var i = 0; i < rawCoords.length; i++) {
-	    	var newCoor = new google.maps.LatLng(rawCoords[i].latitude, rawCoords[i].longitude);
-	    	neighborhoodCoords.push(newCoor);
-	    }
-	    console.log(neighborhoodCoords);
-	//create if condition for var and zipcode
-	  // Construct the polygon.
-	  	neighborhoodPolygon = new google.maps.Polygon({
-	    paths: neighborhoodCoords,
-	    strokeColor: '#161AA4',
-	    strokeOpacity: 0.8,
-	    strokeWeight: 2,
-	    fillColor: '#161AA4',
-	    fillOpacity: 0.35
-	  });
-	  neighborhoodPolygon.setMap(map);
-	};
-
-	google.maps.event.addDomListener(window, 'load', initialize);
+	var rawCoords = <%= raw @category.coordinates.to_json %>
 </script>

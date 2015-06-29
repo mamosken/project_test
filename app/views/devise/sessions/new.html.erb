@@ -1,24 +1,61 @@
+<head>
+<style>
+nav{
+  margin-bottom: 0;
+  padding-bottom:0;
+
+}
+body {margin: 0; border:0;padding: 0}
+h2   {color: rgba(0, 0, 0, 0.62);
+  text-align: center;
+  text-shadow: 2px 0px 5px gray;
+  font-family: arial;
+  font-size: 57px;
+  font-weight: bolder;
+}
+#bkg{
+  background-color: white !important; 
+}
+#form_center{
+  margin: 0 auto;
+  padding-left: 42%;
+  padding-top: 8%
+
+}
+input{
+  margin: 0 auto;
+}
+</style>
+</head>
+<div class= "background_picture_home">
+  <div class="bright_background">
 <div class="center_form">
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h2>Sign in</h2>
-
-    <%=form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <h2>Roommie finder</h2>
+  <h2>Find your espace here!</h2>
+  
+    <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="OZkv/LTHl4lFU9DxH/mH+VPjkwmTtiPaF7f2a3uoatRoYPhUKr7Cv0j+/dhhP4MyD35MBPiM2LE+SbIAfEEfCg==" />
       <div class="form-inputs"></br>
-      <%= f.label :email %><br />
-        <%= f.text_field  :email, required: false, autofocus: true, input_html: { class: 'form-control' } %></br>
-        <%= f.label :password %></br>
-        <%= f.password_field  :password, required: false, input_html: { class: 'form-control' } %></br>
-        <%= f.label :remember_me %>
-        <%= f.check_box  :remember_me, as: :boolean, input_html: { class: 'form-control' } if devise_mapping.rememberable? %></br>
-      </div>
-      <br>
-  </div>
+      <div id="form_center">
+        <p><label for="user_email">Email</label><br/>
+        <input autofocus="autofocus" input_html="{:class=&gt;&quot;form-control&quot;}" type="text" value="" name="user[email]" id="user_email" /></br></br></p>
+        <p><label for="user_password">Password</label></br>
+        <input input_html="{:class=&gt;&quot;form-control&quot;}" type="password" name="user[password]" id="user_password" /></p></br></br>
   <div class="form-actions">
-    <%= f.submit "Sign in", class: 'btn btn-primary' %>
+    <input type="submit" name="commit" value="Sign in" class="btn btn-primary" />
   </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
+    </form></br></br>
+    
+  <a href="/users/sign_up">Sign up</a><br />
+
+  <a href="/users/password/new">Forgot your password?</a><br />
+
+
+
+
   </div>
 </div>
 </div>
+
+</body>
+</html>

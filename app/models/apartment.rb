@@ -3,6 +3,7 @@ class Apartment < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :category
+	has_many :prices
 	has_many :rooms, dependent: :destroy
 	accepts_nested_attributes_for :rooms, :allow_destroy => true
 
