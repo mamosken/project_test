@@ -13,7 +13,7 @@ class Apartment < ActiveRecord::Base
 								  # :reject_if => :all_blank, 
 								  # :allow_destroy => true
 
-	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "80x80>" }, :default_url => "/images/:style/missing.png"
+	has_attached_file :image, :styles => { :medium => "300x300>" }, :default_url => "/images/:style/missing.png"
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	geocoded_by :postal_code
 	after_validation :geocode

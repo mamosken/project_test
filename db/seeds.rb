@@ -38,11 +38,11 @@ cat24 = Category.create(name: 'Yorkville', url_name: 'yorkville', postal_code: '
 cat25 = Category.create(name: 'Roosevelt Island', url_name: 'roosevelt_island', postal_code: '10044')
 
 Coordinate.create([
-		{latitude: 40.79171919257143, longitude: -73.96485328674316, category: cat1},
-		{latitude: 40.7970474627213, longitude: -73.97686958312988, category: cat1},
-		{latitude: 40.78093138541519, longitude: -73.98768424987793, category: cat1},
-		{latitude: 40.775991804565585, longitude: -73.97652626037598, category: cat1},
-		{latitude: 40.79171919257143, longitude: -73.96485328674316, category: cat1}
+		{latitude: 40.806036, longitude: -73.971286, category: cat1},
+		{latitude: 40.773090, longitude: -73.994031, category: cat1},
+		{latitude: 40.767824, longitude: -73.982187, category: cat1},
+		{latitude: 40.800546, longitude: -73.958487, category: cat1},
+		{latitude: 40.806036, longitude: -73.971286, category: cat1}
 	])
 Coordinate.create([
   		{latitude: 40.752190, longitude: -73.993337, category: cat2},
@@ -178,11 +178,12 @@ Coordinate.create([
 		{latitude: 40.764149, longitude: -73.973080, category: cat18}
 	])
 Coordinate.create([
-		{latitude: 40.787850, longitude: -73.955846, category: cat19},
-		{latitude: 40.764256, longitude: -73.973012, category: cat19},
-		{latitude: 40.737590, longitude: -73.997469, category: cat19},
-		{latitude: 40.749685, longitude: -73.987427, category: cat19},
-		{latitude: 40.787850, longitude: -73.955846, category: cat19}
+		{latitude: 40.787785, longitude: -73.955674, category: cat19},
+		{latitude: 40.764321, longitude: -73.973184, category: cat19},
+		{latitude: 40.758535, longitude: -73.958764, category: cat19},
+		{latitude: 40.775242, longitude: -73.942370, category: cat19},
+		{latitude: 40.782846, longitude: -73.943572, category: cat19},
+		{latitude: 40.787785, longitude: -73.955674, category: cat19}
 	])
 Coordinate.create([
 		{latitude: 40.834403, longitude: -73.950492, category: cat20},

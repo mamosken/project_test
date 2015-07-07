@@ -34,16 +34,26 @@
 				border-bottom: 1px solid #EAEAEA;
 			}
 		}
+	.map_display{
+		height:1000px ;
+		width:100px;
+		}
 	}
 	#title{
 		 text-align: center;
 	}
-	.open > .dropdown-menu {
-		padding: 9px;
-		overflow: scroll;
-		height: 300px;
-}
 
+}
+@media all and (max-width: 1000px){ 
+img{
+	max-width: 157px;
+}
+#map{
+	height:100px ;
+	width:100px;
+	display:block;
+	float: right;
+	}
 
 }
 //------------- @midea 360px ends
@@ -53,6 +63,11 @@
 	background-size: cover	;
 	background-repeat: no-repeat;
 	height: 700px;
+}
+	.open > .dropdown-menu {
+		padding: 9px;
+		overflow: scroll;
+		height: 300px;
 }
 #bkg{
   background-color: white !important; 
@@ -65,11 +80,23 @@
 	margin-top: -2%;
 }
 .navbar-default .navbar-brand {
-  color: #777;
-  font-family: arial;
-  font-weight: bolder;
-  font-size: 30px;
-  text-shadow: 1px -1px 2px rgb(114, 114, 134)
+	color: #3353B7;
+	font-family: arial;
+	font-weight: bolder;
+	font-size: 30px;
+	text-shadow: 0px 0px 1px rgb(0, 0, 0);
+	text-decoration: none;
+
+}
+.navbar-default .navbar-brand a {
+  color: #337AB7;
+}
+.navbar-default .navbar-brand a:hover {
+ 	color: #3353B7;
+	font-family: arial;
+	font-weight: bolder;
+	text-decoration: none;
+	transition: color 1s
 }
 body {
 	background: rgb(235, 238, 243); 
@@ -184,7 +211,7 @@ a img{
 	margin: 0 auto;
 	background-color: rgba(249, 248, 248, 0.95);
 	color: rgba(6, 8, 7, 0.65);
-	box-shadow: -4px 9px 14px -2px #5c4c45;
+	box-shadow: 7px 9px 14px -2px #5c4c45;
 	ul, ol {
 		padding-left: 18px;
 		li {
@@ -266,7 +293,7 @@ a img{
  	background-size: cover;
 }
 .navbar-nav > li > .dropdown-menu {
-	height: 300px;
+	height: 400px;
 	overflow: scroll;
 	width: 179px;
 }
@@ -287,4 +314,7 @@ a img{
 }
 .buttons{
 	clear: both;
+}
+div#wrap_show {
+  margin-left: 17%;
 }
