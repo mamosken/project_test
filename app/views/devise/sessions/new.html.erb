@@ -1,0 +1,67 @@
+<head>
+<style>
+nav{
+  margin-bottom: 0;
+  padding-bottom:0;
+
+}
+body {margin: 0; border:0;padding: 0}
+h2   {color: rgba(0, 0, 0, 0.62);
+  text-align: center;
+  text-shadow: 2px 0px 5px gray;
+  font-family: arial;
+  font-size: 57px;
+  font-weight: bolder;
+}
+h3{
+  color: rgba(0, 0, 0, 0.62);
+  text-align: center;
+  text-shadow: 1px 0px 1px gray;
+  font-family: arial;
+  font-weight: bolder;
+}
+
+#form_center{
+  margin: 0 auto;
+  padding-left: 42%;
+  padding-top: 8%
+
+}
+input{
+  margin: 0 auto;
+}
+</style>
+</head>
+<div class= "background_picture_home">
+  <div class="bright_background">
+<div class="center_form">
+<div class="row">
+    <h2>Roommie finder</h2>
+  <h2>Your space is here!</h2>
+  <h3> Post your room and connect to potential roommates</h3>
+  
+    <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="OZkv/LTHl4lFU9DxH/mH+VPjkwmTtiPaF7f2a3uoatRoYPhUKr7Cv0j+/dhhP4MyD35MBPiM2LE+SbIAfEEfCg==" />
+      <div class="form-inputs"></br>
+      <div id="form_center">
+        <p><label for="user_email">Email</label><br/>
+        <input autofocus="autofocus" input_html="{:class=&gt;&quot;form-control&quot;}" type="text" value="" name="user[email]" id="user_email" /></br></br></p>
+        <p><label for="user_password">Password</label></br>
+        <input input_html="{:class=&gt;&quot;form-control&quot;}" type="password" name="user[password]" id="user_password" /></p></br></br>
+  <div class="form-actions">
+    <input type="submit" name="commit" value="Sign in" class="btn btn-primary" />
+  </div>
+    </form></br></br>
+    
+  <a href="/users/sign_up">Sign up</a><br />
+
+  <a href="/users/password/new">Forgot your password?</a><br />
+
+
+
+
+  </div>
+</div>
+</div>
+
+</body>
+</html>

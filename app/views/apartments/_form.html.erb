@@ -1,24 +1,43 @@
+
+
 <div id="errors">
 	<% if @apartment.errors.any? %>
 		<% @apartment.errors.full_messages.each do |error| %>
-		<p style="color:red;"><%= error %></p>
+			<p style="color:red;"><%= error %></p>
 		<% end %>
 	<% end %>
 </div>
 
-<div class="panel-body">
-	<%=form_for @apartment do |f| %>
-		<p>
-		<%= f.label :title, "title"%>
-		<%= f.text_field :title %>
-		</p>
-		</br>
-		<p>
-		<%= f.label :body, "body" %>
-		<%= f.text_field :body %>
-		</br>
-		<%= f.submit "submit" %>
-		</p>
-	<% end %>
-</div>
-	  
+<div class="center_form">
+	<div class="form-group">
+		<%=form_for @apartment, class: 'form-inline' do |f| %>
+		<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a Neighborhood"}, class: "form-control"  %></br>
+		<%= f.collection_select :price_id, Price.all, :id, :range, {prompt: "Choose a Price Range"} , class: "form-control" %></br>
+		<%= f.label :title, "Apartment's title"%>
+		<%= f.text_field :title, class: "form-control" %></br>
+		<%= f.label :body, "Description of the room" %>
+		<%= f.text_field :body, class: 'form-control' %></br>
+
+		<%= f.label :image, "image" %>
+		<%= f.file_field :image %></br>
+
+	<p>Prefere a roommate who...</p>
+<!-- 		<div class="links"> -->
+	<div class="nested-fields" class="float_left"> 	
+			<%= f.fields_for :rooms_attributes, id: "fields" do |room| %>
+			<%= link_to_add_association ' New line', f, :rooms, class: "btn btn-default add-button", id:"add_btn" %> 
+	
+ 
+ 	</div>	<% end %>
+ 	</br>
+
+ 	<div class="buttons">
+ 	<%= link_to "Cancel", apartments_path, class: "btn btn-warning" %>
+	<%= f.submit "submit", class: 'btn btn-primary' %><% end %> 
+	<%= link_to "Back", root_path, id: "back",class: 'btn btn-default'%>
+	</div>
+
+	</div>
+				</br></br>	  	
+
+</div> <!-- group form-->
