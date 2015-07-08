@@ -8,8 +8,18 @@
 
 Category.destroy_all
 Coordinate.destroy_all
+Price.destroy_all
 
-p "deleting categories and coordinates"
+
+p "building prices, coordinates, and categories."
+
+pri1 = Price.create(range: '$500 to $750')
+pri2 = Price.create(range: '$750 to $1,000')
+pri3 = Price.create(range: '$1,000 to $1,250')
+pri4 = Price.create(range: '$1,250 to $1,500')
+pri5 = Price.create(range: '$1,750 to $2,000')
+
+p "building prices, coordinates, and categories."
 
 cat1 = Category.create(name: 'UWS', url_name: 'uws', postal_code: '10024')
 cat2 = Category.create(name: 'Midtown West/ Hell’s Kitchen', url_name: 'midtown_west_hells_kitchen', postal_code: '')
@@ -233,5 +243,4 @@ Coordinate.create([
 		{latitude: 40.768594, longitude: -73.942744, category: cat25},
 		{latitude: 40.769894, longitude: -73.944461, category: cat25}
 ])
-p "building coordinates and categories. all done"
-
+p "building prices, coordinates, and categories."
