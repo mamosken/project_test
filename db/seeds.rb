@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Category.destroy_all
-# Coordinate.destroy_all
-# Price.destroy_all
+Category.destroy_all
+Coordinate.destroy_all
+Price.destroy_all
 
 
 p "building prices, coordinates, and categories."
