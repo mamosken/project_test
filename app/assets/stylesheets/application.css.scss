@@ -130,11 +130,11 @@ a img{
 	margin-bottom: 40px;
 }
 .apartment_image{
-  max-width: 311px;
   float: left;
 }
 .user_contact{
-  	background-color: rgba(253, 253, 253, 0.94);	max-width: 100%;
+  	background-color: rgba(253, 253, 253, 0.94);	
+  	max-width: 100%;
 	text-align: center;
   	padding-bottom: 5px;
   	color: rgb(89, 91, 90);
@@ -142,6 +142,7 @@ a img{
 #user_contact{
 	font-size: 24px;
 	color: rgb(51, 122, 183);
+	background-color: white;
 } 
 .nav_form{
 	float: right;
@@ -158,14 +159,17 @@ a img{
 	width: 100%;
 	padding: 10px 10px;
  	margin: 0 auto;
- 	// background-image: url("/assets/New-York-Manhattan.5.jpg");
- 	background-repeat: no-repeat;
- 	background-size: cover;
+ 	margin-left: 25%;
+}
+#wrapper-show{
+  width: 97%;
+  padding: 10px 10px;
 }
 #wrap_show{
 	border: 1px solid;
 	border: 1px solid gray;
   	box-shadow: 1px 1px 10px gray;
+  	margin-left: 25%;
 }
 .image_wrapper {
 	max-height: 400px;
@@ -255,13 +259,15 @@ a img{
 	margin: 0 auto;
 	max-width:100%;
 }
-.map_display{
- float: left;
-  width: 55%;
+
+.map_display {
+  float: left;
   border: 1px solid;
   border: 1px solid gray;
   box-shadow: 13px 1px 14px gray;
   padding-left: 0%;
+  padding: 20px;
+  margin-right: 43px;
 }
 .list_neighborhood{
 	clear:both;
@@ -272,7 +278,7 @@ a img{
 .open>.dropdown-menu {
 	padding: 9px;
 }
-#wrap_row{
+.wrap_row{
 	padding: 0 15%;
 	width: 100%;
 	margin: 0 auto;
@@ -315,6 +321,6 @@ a img{
 .buttons{
 	clear: both;
 }
-div#wrap_show {
+div.wrap_show {
   margin-left: 17%;
 }

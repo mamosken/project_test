@@ -1,26 +1,44 @@
-<h1> <%= apartment.title %></h1>
-<%= image_tag apartment.image.url(:medium, class: "apartment_image")  %>
-<div class="user_contact">
-	<p><%= apartment.user.email %></p>	
-</div>
-<div class="roomate_list_wrapper">
-	<h4>We want a roommate who...</h4>	
-		<% apartment.rooms.each do |room| %>
-		<ul>
-			<li><%= (room.name)%>
-			<% if current_user and current_user == apartment.user%>
-			<%= link_to(" x ", room_path(room), method: :delete) %></li>
-		</ul>
-		<% end %>
-		<% end %>
-</div>
-<div class="row">
-	<div class="col-md-12">
-	<%= link_to "Back", root_path, class: 'btn btn-default' %>
-	<% if current_user and current_user ==  apartment.user%>
-		<%= link_to 'Edit', edit_apartment_path(apartment), class: 'btn btn-default', id: "edit" %>
-		<%= link_to 'Delete', apartment_path(apartment), method: :delete, data: {confirm:"Confirm if you want to delete"},class: 'btn btn-default' %>
-	<% end %>
 
+<div class="row" class = "wrap_row">
+	<div class = "wrap_show">
+		<div style = "text-align: center"> 
+		<h3><%= apartment.title %></h3>
+		</div>
+		<div class=" wrapper-show">
+			<div class="apartment_image">
+			<%= image_tag apartment.image.url(:medium, id: "apartment_image")%>
+			<% if current_user %>	
+			<div class="user_contact">
+				<span>Contact info:</span><div id="user_contact"><p> <%= apartment.user.email %></p></div>	
+				<p> <%= apartment.body %></p>
+			</div>
+				<% end %>
+			</div>
+			<div >
+
+		<div class="roomate_list_wrapper">
+			<h4>Room-me Preferences</h4>	
+			<% apartment.rooms.each do |room| %>
+			<ul>
+				<li>
+				<%= (room.name)%>
+				<% if current_user and current_user == apartment.user%>
+				<%= link_to(" x ", room_path(room), method: :delete) %>
+				</li>
+			</ul>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="pull-right" class= "links_show" >
+			<%= link_to "Back", root_path, class: 'btn btn-default btn-xs ' %>
+			<% if current_user and current_user ==  apartment.user%>
+			<%= link_to 'Delete', apartment_path(apartment), method: :delete, data: {confirm:"Confirm if you want to delete"},class: 'btn btn-default btn-xs' %>
+			<%= link_to 'Edit', edit_apartment_path(apartment), class: 'btn btn-default btn-xs', id: "edit" %>
+			<% end %></br>
+		</div>
+		</div>
+		</div>
+
+	</div>		
 	</div>
-</div>
+</div>	
